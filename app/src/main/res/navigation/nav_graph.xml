@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.area13abschluss.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/buchungFragment"
+        android:name="com.example.area13abschluss.ui.BuchungFragment"
+        android:label="fragment_buchung"
+        tools:layout="@layout/fragment_buchung" />
+    <fragment
+        android:id="@+id/feldinfosFragment"
+        android:name="com.example.area13abschluss.ui.FeldinfosFragment"
+        android:label="fragment_feldinfos"
+        tools:layout="@layout/fragment_feldinfos" />
+    <fragment
+        android:id="@+id/kalenderFragment"
+        android:name="com.example.area13abschluss.ui.feldui.KalenderFragment"
+        android:label="fragment_kalender"
+        tools:layout="@layout/fragment_kalender" >
+        <action
+            android:id="@+id/action_kalenderFragment_to_eigenerkalenderFragment"
+            app:destination="@id/eigenerkalenderFragment" />
+        <action
+            android:id="@+id/action_kalenderFragment_to_feldkalenderFragment"
+            app:destination="@id/feldkalenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/einstellungenFragment"
+        android:name="com.example.area13abschluss.ui.EinstellungenFragment"
+        android:label="fragment_einstellungen"
+        tools:layout="@layout/fragment_einstellungen" />
+    <fragment
+        android:id="@+id/eigenerkalenderFragment"
+        android:name="com.example.area13abschluss.ui.feldui.EigenerkalenderFragment"
+        android:label="fragment_eigenerkalender"
+        tools:layout="@layout/fragment_eigenerkalender" >
+        <action
+            android:id="@+id/action_eigenerkalenderFragment_to_kalenderFragment"
+            app:destination="@id/kalenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feldkalenderFragment"
+        android:name="com.example.area13abschluss.ui.feldui.FeldkalenderFragment"
+        android:label="fragment_feldkalender"
+        tools:layout="@layout/fragment_feldkalender" >
+        <action
+            android:id="@+id/action_feldkalenderFragment_to_kalenderFragment"
+            app:destination="@id/kalenderFragment" />
+    </fragment>
+</navigation>
