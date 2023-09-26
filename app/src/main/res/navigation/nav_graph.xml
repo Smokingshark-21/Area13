@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/kalenderFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -54,5 +54,8 @@
         <action
             android:id="@+id/action_feldkalenderFragment_to_kalenderFragment"
             app:destination="@id/kalenderFragment" />
+        <action
+            android:id="@+id/action_feldkalenderFragment_to_buchungFragment"
+            app:destination="@id/buchungFragment" />
     </fragment>
 </navigation>

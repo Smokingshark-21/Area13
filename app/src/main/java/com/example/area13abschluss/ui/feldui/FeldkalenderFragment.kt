@@ -101,6 +101,11 @@ class FeldkalenderFragment : Fragment() {
             // show
             datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
         }
+
+
+        binding.button.setOnClickListener {
+            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToBuchungFragment())
+        }
     }
 
 
@@ -135,9 +140,9 @@ class FeldkalenderFragment : Fragment() {
             twelvenuhr(int)
             thirdtenuhr(5)
             fourteenuhr(int)
-            fivetenuhr(20)
+            fivetenuhr(10)
             sixteenuhr(5)
-            seventeenuhr(0)
+            seventeenuhr(20)
 
         } else {
         tenuhr(0)
