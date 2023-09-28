@@ -1,5 +1,7 @@
 package com.example.area13abschluss.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -36,6 +39,7 @@ class BuchungFragment : Fragment() {
     val anzahl = arrayOf("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20")
 
     val mutableLiveData = MutableLiveData<String>("Area13 Buchung")
+    val emailversand = MutableLiveData<Boolean>(false)
     val spielartval = MutableLiveData<String>()
     val spieler18val = MutableLiveData<String>()
     val spielereigen = MutableLiveData<String>()
@@ -305,7 +309,37 @@ class BuchungFragment : Fragment() {
                 altdatum,uhrzeit,spieleranzahl,spielerausrustung,spielerausleihen,weiterfragen)
         }
 
+        emailversand.observe(viewLifecycleOwner){
+            if (emailversand.value!!) {
+                dialog()
+                emailversand.postValue(false)
+            }
+        }
 
+
+    }
+
+    private fun dialog() {
+            val alertDialog = AlertDialog.Builder(requireContext()).create()
+            alertDialog.setTitle("Email wurde Versand")
+            alertDialog.setMessage("Möchten sie die Buchung in ihrem eigenen kalender speichern inerhalb der app?")
+
+            alertDialog.setButton(
+                AlertDialog.BUTTON_POSITIVE, "Ja"
+            ) { dialog, which -> dialog.dismiss() }
+
+            alertDialog.setButton(
+                AlertDialog.BUTTON_NEGATIVE, "Nein"
+            ) { dialog, which -> dialog.dismiss() }
+            alertDialog.show()
+        //toDo weiterleitung ja button
+
+            val btnPositive = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            val btnNegative = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+            val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
+            layoutParams.weight = 10f
+            btnPositive.layoutParams = layoutParams
+            btnNegative.layoutParams = layoutParams
     }
 
     private fun sendemail(headline:String,vorname:String,
@@ -356,6 +390,7 @@ class BuchungFragment : Fragment() {
                             "Weitere Fragen: "+weiterefragen+"\n"
                 )
                 Transport.send(message)
+                emailversand.postValue(true)
             }catch (e:Exception){
                     Log.wtf("email",e)
             }
