@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import com.example.area13abschluss.R
 import com.example.area13abschluss.databinding.FragmentBuchungBinding
 import com.example.area13abschluss.ui.feldui.DatePickerFragment
@@ -34,6 +35,11 @@ class BuchungFragment : Fragment() {
     val spieler18 = arrayOf("Ja","nein")
     val anzahl = arrayOf("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20")
 
+    val mutableLiveData = MutableLiveData<String>("Area13 Buchung")
+    val spielartval = MutableLiveData<String>()
+    val spieler18val = MutableLiveData<String>()
+    val spielereigen = MutableLiveData<String>()
+    val spielerleih = MutableLiveData<String>()
 
     override fun onResume() {
         super.onResume()
@@ -47,7 +53,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielartval.postValue(spielart[position]!!)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -66,7 +72,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spieler18val.postValue(spieler18[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -85,7 +91,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielereigen.postValue(anzahl[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -104,7 +110,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielerleih.postValue(anzahl[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -137,20 +143,26 @@ class BuchungFragment : Fragment() {
         hangarCV.strokeWidth = 0
         mpCV.strokeWidth = 0
 
+
+
         area13Btn.setOnClickListener {
             area13CV.strokeWidth = 3
             hangarCV.strokeWidth = 0
             mpCV.strokeWidth = 0
+            mutableLiveData.postValue("Area13 Buchung")
+
         }
         hangar13Btn.setOnClickListener {
             area13CV.strokeWidth = 0
             hangarCV.strokeWidth = 3
             mpCV.strokeWidth = 0
+            mutableLiveData.postValue("Hangar13 Buchung")
         }
         mpBtn.setOnClickListener {
             area13CV.strokeWidth = 0
             hangarCV.strokeWidth = 0
             mpCV.strokeWidth = 3
+            mutableLiveData.postValue("Megapark Buchung")
         }
 
 
@@ -163,7 +175,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielartval.postValue(spielart[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -182,7 +194,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spieler18val.postValue(spieler18[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -201,7 +213,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielereigen.postValue(anzahl[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -220,7 +232,7 @@ class BuchungFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(requireContext(),"selected player is= "+spielart[position],Toast.LENGTH_SHORT).show()
+                spielerleih.postValue(anzahl[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -269,17 +281,40 @@ class BuchungFragment : Fragment() {
             datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
         }
 
-        val sendrpass = "idws socj pcmm ixdb"
 
         binding.button.setOnClickListener {
+            val vorname = binding.vornameED.text.toString()
+            val nachname = binding.nachnameED.text.toString()
+            val strhausnmr = binding.strasehausnmrED.text.toString()
+            val postleit = binding.postED.text.toString()
+            val ort = binding.ortED.text.toString()
+            val telefonnummer = binding.telED.text.toString()
+            val email = binding.emailED.text.toString()
+            val spielart = spielartval.value.toString()
+            val spieleralle18 = spieler18val.value.toString()
+            val datumprim = binding.primdDateED.text.toString()
+            val altdatum = binding.alterdatumED.text.toString()
+            val uhrzeit = binding.uhrzeitED.text.toString()
+            val spieleranzahl = binding.spieleranzahlED.text.toString()
+            val spielerausrustung = spielereigen.value.toString()
+            val spielerausleihen = spielerleih.value.toString()
+            val weiterfragen = binding.fragenED.text.toString()
 
-            sendemail("test1","test2","test3")
+            sendemail(mutableLiveData.value.toString(),vorname,nachname,strhausnmr,postleit,ort,telefonnummer,email,
+                spielart,spieleralle18,datumprim,
+                altdatum,uhrzeit,spieleranzahl,spielerausrustung,spielerausleihen,weiterfragen)
         }
 
 
     }
 
-    private fun sendemail(n_:String,t_:String,tt_:String) {
+    private fun sendemail(headline:String,vorname:String,
+                          nachname:String,strhausnmr:String,postleit:String,ort:String,
+                          telefonnummer:String,email:String,spielart:String,
+                          spieleralle18:String,gewunschtesdatum:String,altdatum:String,
+                          uhrzeit:String,spieleranzahl:String,
+                          spielermit:String,spielerausleihen:String,
+                          weiterefragen:String) {
         val emaildata = emaildata()
         val properties = System.getProperties()
         properties.put("mail.smtp.host",emaildata.Gmail_Host)
@@ -301,8 +336,25 @@ class BuchungFragment : Fragment() {
             try {
                 val recipientEmail = InternetAddress(emaildata.Reciver_Email_Adress)
                 message.addRecipient(Message.RecipientType.TO, recipientEmail)
-                message.setSubject(t_)
-                message.setText("From: "+n_+"\n"+"Text: "+tt_)
+                message.setSubject(headline)
+                message.setText(
+                            "Vorname: "+vorname+"\n"+
+                            "Nachname: "+nachname+"\n"+
+                            "Straße und Hausnummer: "+strhausnmr+"\n"+
+                            "Postleitzahl: "+postleit+"\n"+
+                            "Ort: "+ort+"\n"+
+                            "Telefonnumer: "+telefonnummer+"\n"+
+                                    "Email: "+email+"\n"+
+                            "Spielart: "+spielart+"\n"+
+                            "Spieler alle 18: "+spieleralle18+"\n"+
+                            "Gewünschtes Datum: "+gewunschtesdatum+"\n"+
+                            "Alternatives Datum: "+altdatum+"\n"+
+                            "Uhrzeit: "+uhrzeit+"\n"+
+                            "Spieleranzahl: "+spieleranzahl+"\n"+
+                            "Spieler mit Eigener Ausrüstung: "+spielermit+"\n"+
+                            "Spieler ausleihen: "+spielerausleihen+"\n"+
+                            "Weitere Fragen: "+weiterefragen+"\n"
+                )
                 Transport.send(message)
             }catch (e:Exception){
                     Log.wtf("email",e)
