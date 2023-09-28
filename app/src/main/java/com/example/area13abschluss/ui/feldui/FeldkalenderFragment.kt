@@ -142,7 +142,7 @@ class FeldkalenderFragment : Fragment() {
             fourteenuhr(int)
             fivetenuhr(10)
             sixteenuhr(5)
-            seventeenuhr(20)
+            seventeenuhr(5)
 
         } else {
         tenuhr(0)
