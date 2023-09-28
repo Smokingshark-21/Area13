@@ -34,16 +34,16 @@ class BuchungFragment : Fragment() {
 
     lateinit var binding: FragmentBuchungBinding
 
-    val spielart = arrayOf("Paintball","Softair")
-    val spieler18 = arrayOf("Ja","nein")
-    val anzahl = arrayOf("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20")
+    private val spielart = arrayOf("Paintball","Softair")
+    private val spieler18 = arrayOf("Ja","nein")
+    private val anzahl = arrayOf("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20")
 
-    val mutableLiveData = MutableLiveData<String>("Area13 Buchung")
-    val emailversand = MutableLiveData<Boolean>(false)
-    val spielartval = MutableLiveData<String>()
-    val spieler18val = MutableLiveData<String>()
-    val spielereigen = MutableLiveData<String>()
-    val spielerleih = MutableLiveData<String>()
+    private val mutableLiveData = MutableLiveData<String>("Area13 Buchung")
+    private val emailversand = MutableLiveData<Boolean>(false)
+    private val spielartval = MutableLiveData<String>()
+    private val spieler18val = MutableLiveData<String>()
+    private val spielereigen = MutableLiveData<String>()
+    private val spielerleih = MutableLiveData<String>()
 
     override fun onResume() {
         super.onResume()
