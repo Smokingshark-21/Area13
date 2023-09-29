@@ -1,4 +1,4 @@
-package com.example.area13abschluss.ui.util
+package com.example.area13abschluss.ui.buchungsfunc.util
 
 data class emaildata(
      val Sender_Email_Adress:String = "area13app@gmail.com",

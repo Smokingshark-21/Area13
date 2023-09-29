@@ -459,6 +459,7 @@
                     android:id="@+id/uhrzeitED"
                     android:inputType="none"
                     android:text=""
+                    android:focusableInTouchMode="false"
                     android:textColor="@color/md_theme_dark_primary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

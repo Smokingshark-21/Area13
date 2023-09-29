@@ -1,7 +1,7 @@
 package com.example.area13abschluss.ui
 
 import android.app.AlertDialog
-import android.content.DialogInterface
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,16 +10,16 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.example.area13abschluss.R
 import com.example.area13abschluss.databinding.FragmentBuchungBinding
 import com.example.area13abschluss.ui.feldui.DatePickerFragment
-import com.example.area13abschluss.ui.util.emaildata
-import kotlinx.coroutines.Runnable
+import com.example.area13abschluss.ui.buchungsfunc.util.emaildata
 import java.lang.Exception
-import java.util.Objects
+import java.text.DecimalFormat
+import java.util.Calendar
 import javax.mail.Authenticator
 import javax.mail.Message
 import javax.mail.PasswordAuthentication
@@ -28,7 +28,6 @@ import javax.mail.Transport
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 import kotlin.concurrent.thread
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 class BuchungFragment : Fragment() {
 
@@ -317,6 +316,10 @@ class BuchungFragment : Fragment() {
         }
 
 
+        binding.uhrzeitED.setOnClickListener {
+            timepicker()
+        }
+
     }
 
     private fun dialog() {
@@ -326,7 +329,8 @@ class BuchungFragment : Fragment() {
 
             alertDialog.setButton(
                 AlertDialog.BUTTON_POSITIVE, "Ja"
-            ) { dialog, which -> dialog.dismiss() }
+            ) { dialog, which -> dialog.dismiss()
+            findNavController().navigate(BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment())}
 
             alertDialog.setButton(
                 AlertDialog.BUTTON_NEGATIVE, "Nein"
@@ -395,6 +399,41 @@ class BuchungFragment : Fragment() {
                     Log.wtf("email",e)
             }
         }
+    }
+
+    fun timepicker(){
+
+        val currentTime = Calendar.getInstance()
+        val hour = currentTime.get(Calendar.HOUR_OF_DAY)
+        val minute = currentTime.get(Calendar.MINUTE)
+
+        val simpleTimePicker = TimePickerDialog(
+            requireContext(), { _, hourOfDay, min ->
+                timeFormat(hourOfDay, min)
+            }, hour, minute, true
+        )
+            simpleTimePicker.show()
+
+
+
+    }
+
+    private fun timeFormat(hour: Int, minute: Int) {
+        val modifiedHour = getHourAmPm(hour)
+        val amPm = if (hour > 11) "PM" else "AM"
+        val numberFormat = DecimalFormat("00")
+
+        val timeTxt = binding.uhrzeitED
+        timeTxt.setText("${numberFormat.format(modifiedHour)}:${numberFormat.format(minute)}-${numberFormat.format(modifiedHour+4)}:${numberFormat.format(minute)} Uhr")
+    }
+
+    private fun getHourAmPm(hour: Int): Int {
+        // return the hour value for AM PM time Format
+        var modifiedHour = if (hour > 11) hour - 12 else hour
+        if (modifiedHour == 0) {
+            modifiedHour = 12
+        }
+        return modifiedHour
     }
 
 

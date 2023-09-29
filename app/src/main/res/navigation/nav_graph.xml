@@ -14,7 +14,11 @@
         android:id="@+id/buchungFragment"
         android:name="com.example.area13abschluss.ui.BuchungFragment"
         android:label="fragment_buchung"
-        tools:layout="@layout/fragment_buchung" />
+        tools:layout="@layout/fragment_buchung" >
+        <action
+            android:id="@+id/action_buchungFragment_to_eigenerkalenderFragment"
+            app:destination="@id/eigenerkalenderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/feldinfosFragment"
         android:name="com.example.area13abschluss.ui.FeldinfosFragment"
