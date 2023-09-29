@@ -294,14 +294,14 @@ class BuchungFragment : Fragment() {
             val ort = binding.ortED.text.toString()
             val telefonnummer = binding.telED.text.toString()
             val email = binding.emailED.text.toString()
-            val spielart = spielartval.value.toString()
-            val spieleralle18 = spieler18val.value.toString()
+            val spielart = binding.spielartAuto.text.toString()
+            val spieleralle18 = binding.spieler18Auto.text.toString()
             val datumprim = binding.primdDateED.text.toString()
             val altdatum = binding.alterdatumED.text.toString()
             val uhrzeit = binding.uhrzeitED.text.toString()
             val spieleranzahl = binding.spieleranzahlED.text.toString()
-            val spielerausrustung = spielereigen.value.toString()
-            val spielerausleihen = spielerleih.value.toString()
+            val spielerausrustung = binding.anzahleigenAuto.text.toString()
+            val spielerausleihen = binding.ausrStungleihenAuto.text.toString()
             val weiterfragen = binding.fragenED.text.toString()
 
             sendemail(mutableLiveData.value.toString(),vorname,nachname,strhausnmr,postleit,ort,telefonnummer,email,

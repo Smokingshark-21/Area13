@@ -380,6 +380,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/alterdatumED"
                     android:inputType="none"
+                    android:focusableInTouchMode="false"
                     android:text="01.01.2023"
                     android:textColor="@color/md_theme_dark_primary"
                     android:layout_width="match_parent"
@@ -399,6 +400,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/primdDateED"
                     android:inputType="none"
+                    android:focusableInTouchMode="false"
                     android:text="01.01.2023"
                     android:textColor="@color/md_theme_dark_primary"
                     android:layout_width="match_parent"
