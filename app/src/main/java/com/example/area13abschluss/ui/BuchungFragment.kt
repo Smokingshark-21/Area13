@@ -11,8 +11,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
+import com.example.area13abschluss.DB.data.Buchung
 import com.example.area13abschluss.R
 import com.example.area13abschluss.databinding.FragmentBuchungBinding
 import com.example.area13abschluss.ui.feldui.DatePickerFragment
@@ -32,6 +34,7 @@ import kotlin.concurrent.thread
 class BuchungFragment : Fragment() {
 
     lateinit var binding: FragmentBuchungBinding
+    private val viewModel: Viewmodel by activityViewModels()
 
     private val spielart = arrayOf("Paintball", "Softair")
     private val spieler18 = arrayOf("Ja", "nein")
@@ -383,12 +386,9 @@ class BuchungFragment : Fragment() {
         ) { dialog, which ->
             dialog.dismiss()
             findNavController().navigate(
-                BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment(
-                    "${binding.primdDateED.text.toString()}",
-                    "${binding.uhrzeitED.text.toString()}",
-                    "${mutableLiveData.value.toString()}"
-                )
+                BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment()
             )
+            viewModel.instertbuchung(Buchung(0,"${binding.primdDateED.text.toString().replace("-",".")}","${binding.uhrzeitED.text.toString()}","${mutableLiveData.value.toString()}",true))
         }
 
         alertDialog.setButton(
@@ -479,8 +479,7 @@ class BuchungFragment : Fragment() {
     }
 
     fun timeFormat(hour: Int, minute: Int) {
-        val modifiedHour = getHourAmPm(hour)
-        val amPm = if (hour > 11) "PM" else "AM"
+        val modifiedHour = hour
         val numberFormat = DecimalFormat("00")
 
         val timeTxt = binding.uhrzeitED
@@ -491,15 +490,6 @@ class BuchungFragment : Fragment() {
                 )
             }:${numberFormat.format(minute)} Uhr"
         )
-    }
-
-    fun getHourAmPm(hour: Int): Int {
-        // return the hour value for AM PM time Format
-        var modifiedHour = if (hour > 11) hour - 12 else hour
-        if (modifiedHour == 0) {
-            modifiedHour = 12
-        }
-        return modifiedHour
     }
 
 }

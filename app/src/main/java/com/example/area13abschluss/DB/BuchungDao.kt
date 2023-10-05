@@ -25,6 +25,6 @@ interface BuchungDao {
     fun dellAll()
 
     @Query("SELECT* FROM Buchung WHERE idbuchung= :id")
-    fun getDrink(id:String):Buchung
+    fun getBuchung(id:Int):Buchung
 
 }

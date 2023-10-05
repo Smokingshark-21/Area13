@@ -49,15 +49,9 @@
         <action
             android:id="@+id/action_eigenerkalenderFragment_to_kalenderFragment"
             app:destination="@id/kalenderFragment" />
-        <argument
-            android:name="Datum"
-            app:argType="string" />
-        <argument
-            android:name="Uhrzeit"
-            app:argType="string" />
-        <argument
-            android:name="Wo"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_eigenerkalenderFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/feldkalenderFragment"
@@ -70,5 +64,17 @@
         <action
             android:id="@+id/action_feldkalenderFragment_to_buchungFragment"
             app:destination="@id/buchungFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.area13abschluss.ui.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_eigenerkalenderFragment"
+            app:destination="@id/eigenerkalenderFragment" />
     </fragment>
 </navigation>

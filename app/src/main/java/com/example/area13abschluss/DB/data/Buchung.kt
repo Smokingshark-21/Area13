@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Buchung(
-    @PrimaryKey
-    val idbuchung:String,
+    @PrimaryKey(autoGenerate = true)
+    val idbuchung: Int,
     val datum:String,
     val uhrzeit:String,
-    val ort:String
+    val ort:String,
+    val active:Boolean
 )

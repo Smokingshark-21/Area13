@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.bottomNavigationView.setOnItemReselectedListener {
-            NavigationUI.onNavDestinationSelected(it,navController)
+            NavigationUI.onNavDestinationSelected(it, navController)
 
-            navController.popBackStack(it.itemId,false)
+            navController.popBackStack(it.itemId, false)
             return@setOnItemReselectedListener
         }
     }
