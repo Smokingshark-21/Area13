@@ -29,6 +29,10 @@ class KalenderFragment : Fragment() {
         binding.FeldKalenderBTN.setOnClickListener {
             findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToFeldkalenderFragment())
         }
+
+        binding.EigenerKalenderBTN.setOnClickListener {
+            findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToEigenerkalenderFragment("","",""))
+        }
     }
 
 

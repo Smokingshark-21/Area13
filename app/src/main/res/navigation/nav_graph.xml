@@ -49,6 +49,15 @@
         <action
             android:id="@+id/action_eigenerkalenderFragment_to_kalenderFragment"
             app:destination="@id/kalenderFragment" />
+        <argument
+            android:name="Datum"
+            app:argType="string" />
+        <argument
+            android:name="Uhrzeit"
+            app:argType="string" />
+        <argument
+            android:name="Wo"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/feldkalenderFragment"

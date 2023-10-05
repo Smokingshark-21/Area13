@@ -33,9 +33,31 @@ class BuchungFragment : Fragment() {
 
     lateinit var binding: FragmentBuchungBinding
 
-    private val spielart = arrayOf("Paintball","Softair")
-    private val spieler18 = arrayOf("Ja","nein")
-    private val anzahl = arrayOf("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20")
+    private val spielart = arrayOf("Paintball", "Softair")
+    private val spieler18 = arrayOf("Ja", "nein")
+    private val anzahl = arrayOf(
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+    )
 
     private val mutableLiveData = MutableLiveData<String>("Area13 Buchung")
     private val emailversand = MutableLiveData<Boolean>(false)
@@ -47,9 +69,10 @@ class BuchungFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val spielartAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,spielart)
+        val spielartAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, spielart)
         binding.spielartAuto.setAdapter(spielartAdapter)
-        binding.spielartAuto.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+        binding.spielartAuto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -66,9 +89,10 @@ class BuchungFragment : Fragment() {
 
         }
 
-        val spieler18Adapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,spieler18)
+        val spieler18Adapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, spieler18)
         binding.spieler18Auto.setAdapter(spieler18Adapter)
-        binding.spieler18Auto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+        binding.spieler18Auto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -85,44 +109,49 @@ class BuchungFragment : Fragment() {
 
         }
 
-        val spielereigenausrustungAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,anzahl)
+        val spielereigenausrustungAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, anzahl)
         binding.anzahleigenAuto.setAdapter(spielereigenausrustungAdapter)
-        binding.anzahleigenAuto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                spielereigen.postValue(anzahl[position])
+        binding.anzahleigenAuto.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    spielereigen.postValue(anzahl[position])
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-
-        }
-
-        val spielerleihAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,anzahl)
+        val spielerleihAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, anzahl)
         binding.ausrStungleihenAuto.setAdapter(spielerleihAdapter)
-        binding.ausrStungleihenAuto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                spielerleih.postValue(anzahl[position])
+        binding.ausrStungleihenAuto.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    spielerleih.postValue(anzahl[position])
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
             }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-
-        }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -169,9 +198,10 @@ class BuchungFragment : Fragment() {
         }
 
 
-        val spielartAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,spielart)
+        val spielartAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, spielart)
         binding.spielartAuto.setAdapter(spielartAdapter)
-        binding.spielartAuto.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+        binding.spielartAuto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -188,9 +218,10 @@ class BuchungFragment : Fragment() {
 
         }
 
-        val spieler18Adapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,spieler18)
+        val spieler18Adapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, spieler18)
         binding.spieler18Auto.setAdapter(spieler18Adapter)
-        binding.spieler18Auto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+        binding.spieler18Auto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -207,43 +238,47 @@ class BuchungFragment : Fragment() {
 
         }
 
-        val spielereigenausrustungAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,anzahl)
+        val spielereigenausrustungAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, anzahl)
         binding.anzahleigenAuto.setAdapter(spielereigenausrustungAdapter)
-        binding.anzahleigenAuto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                spielereigen.postValue(anzahl[position])
+        binding.anzahleigenAuto.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    spielereigen.postValue(anzahl[position])
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-
-        }
-
-        val spielerleihAdapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text,anzahl)
+        val spielerleihAdapter =
+            ArrayAdapter<String>(requireContext(), R.layout.spinner_text, anzahl)
         binding.ausrStungleihenAuto.setAdapter(spielerleihAdapter)
-        binding.ausrStungleihenAuto.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                spielerleih.postValue(anzahl[position])
+        binding.ausrStungleihenAuto.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    spielerleih.postValue(anzahl[position])
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
             }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-
-        }
 
 
         binding.primdDateED.setOnClickListener {
@@ -303,12 +338,28 @@ class BuchungFragment : Fragment() {
             val spielerausleihen = binding.ausrStungleihenAuto.text.toString()
             val weiterfragen = binding.fragenED.text.toString()
 
-            sendemail(mutableLiveData.value.toString(),vorname,nachname,strhausnmr,postleit,ort,telefonnummer,email,
-                spielart,spieleralle18,datumprim,
-                altdatum,uhrzeit,spieleranzahl,spielerausrustung,spielerausleihen,weiterfragen)
+            sendemail(
+                mutableLiveData.value.toString(),
+                vorname,
+                nachname,
+                strhausnmr,
+                postleit,
+                ort,
+                telefonnummer,
+                email,
+                spielart,
+                spieleralle18,
+                datumprim,
+                altdatum,
+                uhrzeit,
+                spieleranzahl,
+                spielerausrustung,
+                spielerausleihen,
+                weiterfragen
+            )
         }
 
-        emailversand.observe(viewLifecycleOwner){
+        emailversand.observe(viewLifecycleOwner) {
             if (emailversand.value!!) {
                 dialog()
                 emailversand.postValue(false)
@@ -323,42 +374,52 @@ class BuchungFragment : Fragment() {
     }
 
     private fun dialog() {
-            val alertDialog = AlertDialog.Builder(requireContext()).create()
-            alertDialog.setTitle("Email wurde Versand")
-            alertDialog.setMessage("Möchten sie die Buchung in ihrem eigenen kalender speichern inerhalb der app?")
+        val alertDialog = AlertDialog.Builder(requireContext()).create()
+        alertDialog.setTitle("Email wurde Versand")
+        alertDialog.setMessage("Möchten sie die Buchung in ihrem eigenen kalender speichern inerhalb der app?")
 
-            alertDialog.setButton(
-                AlertDialog.BUTTON_POSITIVE, "Ja"
-            ) { dialog, which -> dialog.dismiss()
-            findNavController().navigate(BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment())}
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE, "Ja"
+        ) { dialog, which ->
+            dialog.dismiss()
+            findNavController().navigate(
+                BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment(
+                    "${binding.primdDateED.text.toString()}",
+                    "${binding.uhrzeitED.text.toString()}",
+                    "${mutableLiveData.value.toString()}"
+                )
+            )
+        }
 
-            alertDialog.setButton(
-                AlertDialog.BUTTON_NEGATIVE, "Nein"
-            ) { dialog, which -> dialog.dismiss() }
-            alertDialog.show()
-        //toDo weiterleitung ja button
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEGATIVE, "Nein"
+        ) { dialog, which -> dialog.dismiss() }
+        alertDialog.show()
 
-            val btnPositive = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            val btnNegative = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-            val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
-            layoutParams.weight = 10f
-            btnPositive.layoutParams = layoutParams
-            btnNegative.layoutParams = layoutParams
+        val btnPositive = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val btnNegative = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
+        layoutParams.weight = 10f
+        btnPositive.layoutParams = layoutParams
+        btnNegative.layoutParams = layoutParams
     }
 
-    private fun sendemail(headline:String,vorname:String,
-                          nachname:String,strhausnmr:String,postleit:String,ort:String,
-                          telefonnummer:String,email:String,spielart:String,
-                          spieleralle18:String,gewunschtesdatum:String,altdatum:String,
-                          uhrzeit:String,spieleranzahl:String,
-                          spielermit:String,spielerausleihen:String,
-                          weiterefragen:String) {
+
+    private fun sendemail(
+        headline: String, vorname: String,
+        nachname: String, strhausnmr: String, postleit: String, ort: String,
+        telefonnummer: String, email: String, spielart: String,
+        spieleralle18: String, gewunschtesdatum: String, altdatum: String,
+        uhrzeit: String, spieleranzahl: String,
+        spielermit: String, spielerausleihen: String,
+        weiterefragen: String
+    ) {
         val emaildata = emaildata()
         val properties = System.getProperties()
-        properties.put("mail.smtp.host",emaildata.Gmail_Host)
-        properties.put("mail.smtp,port","465")
-        properties.put("mail.smtp.ssl.enable","true")
-        properties.put("mail.smtp.auth","true")
+        properties.put("mail.smtp.host", emaildata.Gmail_Host)
+        properties.put("mail.smtp,port", "465")
+        properties.put("mail.smtp.ssl.enable", "true")
+        properties.put("mail.smtp.auth", "true")
 
         val session = Session.getInstance(properties, object : Authenticator() {
             override fun getPasswordAuthentication(): PasswordAuthentication {
@@ -368,66 +429,71 @@ class BuchungFragment : Fragment() {
                 )
             }
         })
-        val message:MimeMessage = MimeMessage(session)
+        val message: MimeMessage = MimeMessage(session)
 
-        thread{
+        thread {
             try {
                 val recipientEmail = InternetAddress(emaildata.Reciver_Email_Adress)
                 message.addRecipient(Message.RecipientType.TO, recipientEmail)
                 message.setSubject(headline)
                 message.setText(
-                            "Vorname: "+vorname+"\n"+
-                            "Nachname: "+nachname+"\n"+
-                            "Straße und Hausnummer: "+strhausnmr+"\n"+
-                            "Postleitzahl: "+postleit+"\n"+
-                            "Ort: "+ort+"\n"+
-                            "Telefonnumer: "+telefonnummer+"\n"+
-                                    "Email: "+email+"\n"+
-                            "Spielart: "+spielart+"\n"+
-                            "Spieler alle 18: "+spieleralle18+"\n"+
-                            "Gewünschtes Datum: "+gewunschtesdatum+"\n"+
-                            "Alternatives Datum: "+altdatum+"\n"+
-                            "Uhrzeit: "+uhrzeit+"\n"+
-                            "Spieleranzahl: "+spieleranzahl+"\n"+
-                            "Spieler mit Eigener Ausrüstung: "+spielermit+"\n"+
-                            "Spieler ausleihen: "+spielerausleihen+"\n"+
-                            "Weitere Fragen: "+weiterefragen+"\n"
+                    "Vorname: " + vorname + "\n" +
+                            "Nachname: " + nachname + "\n" +
+                            "Straße und Hausnummer: " + strhausnmr + "\n" +
+                            "Postleitzahl: " + postleit + "\n" +
+                            "Ort: " + ort + "\n" +
+                            "Telefonnumer: " + telefonnummer + "\n" +
+                            "Email: " + email + "\n" +
+                            "Spielart: " + spielart + "\n" +
+                            "Spieler alle 18: " + spieleralle18 + "\n" +
+                            "Gewünschtes Datum: " + gewunschtesdatum + "\n" +
+                            "Alternatives Datum: " + altdatum + "\n" +
+                            "Uhrzeit: " + uhrzeit + "\n" +
+                            "Spieleranzahl: " + spieleranzahl + "\n" +
+                            "Spieler mit Eigener Ausrüstung: " + spielermit + "\n" +
+                            "Spieler ausleihen: " + spielerausleihen + "\n" +
+                            "Weitere Fragen: " + weiterefragen + "\n"
                 )
                 Transport.send(message)
                 emailversand.postValue(true)
-            }catch (e:Exception){
-                    Log.wtf("email",e)
+            } catch (e: Exception) {
+                Log.wtf("email", e)
             }
         }
     }
 
-    fun timepicker(){
+    fun timepicker() {
 
         val currentTime = Calendar.getInstance()
         val hour = currentTime.get(Calendar.HOUR_OF_DAY)
         val minute = currentTime.get(Calendar.MINUTE)
 
         val simpleTimePicker = TimePickerDialog(
-            requireContext(), { _, hourOfDay, min ->
+            requireContext(), R.style.DialogTheme, { _, hourOfDay, min ->
                 timeFormat(hourOfDay, min)
             }, hour, minute, true
         )
-            simpleTimePicker.show()
-
+        simpleTimePicker.show()
 
 
     }
 
-    private fun timeFormat(hour: Int, minute: Int) {
+    fun timeFormat(hour: Int, minute: Int) {
         val modifiedHour = getHourAmPm(hour)
         val amPm = if (hour > 11) "PM" else "AM"
         val numberFormat = DecimalFormat("00")
 
         val timeTxt = binding.uhrzeitED
-        timeTxt.setText("${numberFormat.format(modifiedHour)}:${numberFormat.format(minute)}-${numberFormat.format(modifiedHour+4)}:${numberFormat.format(minute)} Uhr")
+        timeTxt.setText(
+            "${numberFormat.format(modifiedHour)}:${numberFormat.format(minute)}-${
+                numberFormat.format(
+                    modifiedHour + 4
+                )
+            }:${numberFormat.format(minute)} Uhr"
+        )
     }
 
-    private fun getHourAmPm(hour: Int): Int {
+    fun getHourAmPm(hour: Int): Int {
         // return the hour value for AM PM time Format
         var modifiedHour = if (hour > 11) hour - 12 else hour
         if (modifiedHour == 0) {
@@ -435,6 +501,5 @@ class BuchungFragment : Fragment() {
         }
         return modifiedHour
     }
-
 
 }
