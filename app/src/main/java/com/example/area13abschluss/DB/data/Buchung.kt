@@ -10,5 +10,5 @@ data class Buchung(
     val datum:String,
     val uhrzeit:String,
     val ort:String,
-    val active:Boolean
+    var active:Boolean
 )

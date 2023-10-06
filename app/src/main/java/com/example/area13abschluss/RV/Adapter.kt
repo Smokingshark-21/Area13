@@ -23,7 +23,7 @@ class Adapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         if (item.active) {
-            holder.binding.datum.setText("${item.datum} ${item.uhrzeit.subSequence(0,5)}:UHr")
+            holder.binding.datum.setText("${item.datum} ${item.uhrzeit.subSequence(0,5)} Uhr")
             holder.binding.wo.setText("${item.ort}")
 
             holder.binding.detailbutton.setOnClickListener {

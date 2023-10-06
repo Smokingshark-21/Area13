@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.DetailFragment" >
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateBTN"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_stroke"
+        android:fontFamily="@font/baron_neue"
+        android:text="Buchung updaten"
+        android:textColor="@color/md_theme_dark_primary"
+        android:textSize="22sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/archivierenBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/archivierenBTN"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_stroke"
+        android:fontFamily="@font/baron_neue"
+        android:text="Buchung archivieren"
+        android:textColor="@color/md_theme_dark_surfaceVariant"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Space
         android:id="@+id/top"
         android:layout_width="match_parent"
@@ -67,30 +103,6 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <TextView
-        android:id="@+id/datumTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/baron_neue"
-        android:text="23.10.23"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/wodeatilTV"
-        app:layout_constraintTop_toBottomOf="@+id/wodeatilTV" />
-
-    <TextView
-        android:id="@+id/uhrzeitTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/baron_neue"
-        android:text="14 Uhr"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/wodeatilTV"
-        app:layout_constraintStart_toEndOf="@+id/datumTV"
-        app:layout_constraintTop_toBottomOf="@+id/wodeatilTV" />
-
-    <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,7 +113,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wodeatilTV" />
+        app:layout_constraintTop_toBottomOf="@+id/primdDate" />
 
     <TextView
         android:id="@+id/textView13"
@@ -172,13 +184,49 @@
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/postleitzahlortTV" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Updaten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="551dp" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/primdDate"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
+        android:hint="Datum"
+        android:inputType="none"
+        app:hintTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wodeatilTV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/datumTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:text="01.01.2023"
+            android:textColor="@color/md_theme_dark_primary" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/uhrzeit"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:hint="Uhrzeit"
+        app:hintTextColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wodeatilTV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/uhrzeitTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:text=""
+            android:textColor="@color/md_theme_dark_primary" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
