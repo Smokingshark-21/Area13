@@ -7,6 +7,24 @@
     tools:context=".ui.DetailFragment" >
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/archivierenBTN"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_stroke"
+        android:fontFamily="@font/baron_neue"
+        android:text="Buchung archivieren"
+        android:textColor="@color/md_theme_dark_surfaceVariant"
+        android:textSize="22sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/delBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/updateBTN"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -19,14 +37,13 @@
         android:text="Buchung updaten"
         android:textColor="@color/md_theme_dark_primary"
         android:textSize="22sp"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/archivierenBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/archivierenBTN"
+        android:id="@+id/delBTN"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -35,8 +52,8 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_stroke"
         android:fontFamily="@font/baron_neue"
-        android:text="Buchung archivieren"
-        android:textColor="@color/md_theme_dark_surfaceVariant"
+        android:text="Buchung Löschen"
+        android:textColor="@color/md_theme_dark_errorContainer"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,39 +145,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/strasseTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/baron_neue"
-        android:text="Straße"
-        android:textColor="@color/md_theme_dark_primary"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <TextView
-        android:id="@+id/postleitzahlortTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/baron_neue"
-        android:text="postleitzahl"
-        android:textColor="@color/md_theme_dark_primary"
-        app:layout_constraintStart_toStartOf="@+id/strasseTV"
-        app:layout_constraintTop_toBottomOf="@+id/strasseTV" />
-
-    <TextView
-        android:id="@+id/bundeslandTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/baron_neue"
-        android:text="TextView"
-        android:textColor="@color/md_theme_dark_primary"
-        app:layout_constraintStart_toStartOf="@+id/postleitzahlortTV"
-        app:layout_constraintTop_toBottomOf="@+id/postleitzahlortTV" />
-
-    <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -176,13 +160,13 @@
         android:id="@+id/telefonnummerTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/baron_neue"
         android:text="01352865"
         android:textColor="@color/md_theme_dark_primary"
-        app:layout_constraintBottom_toBottomOf="@+id/postleitzahlortTV"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/postleitzahlortTV" />
+        app:layout_constraintTop_toTopOf="@+id/strasseplzCV" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -229,4 +213,56 @@
             android:textColor="@color/md_theme_dark_primary" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/strasseplzCV"
+        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:focusableInTouchMode="false"
+        android:inputType="none"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:strokeColor="#00EFC200">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/bundeslandTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/baron_neue"
+                android:text="TextView"
+                android:textColor="@color/md_theme_dark_primary"
+                app:layout_constraintStart_toStartOf="@+id/postleitzahlortTV"
+                app:layout_constraintTop_toBottomOf="@+id/postleitzahlortTV" />
+
+            <TextView
+                android:id="@+id/postleitzahlortTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/baron_neue"
+                android:text="postleitzahl"
+                android:textColor="@color/md_theme_dark_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/strasseTV" />
+
+            <TextView
+                android:id="@+id/strasseTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/baron_neue"
+                android:text="Straße"
+                android:textColor="@color/md_theme_dark_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

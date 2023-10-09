@@ -205,7 +205,7 @@
                 android:id="@+id/ort"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:hint="Ort**"
+                android:hint="Ort*"
                 app:hintTextColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

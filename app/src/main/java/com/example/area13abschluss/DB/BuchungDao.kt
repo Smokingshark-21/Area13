@@ -21,8 +21,8 @@ interface BuchungDao {
     fun getAll(): LiveData<List<Buchung>>
 
 
-    @Query("DELETE FROM Buchung")
-    fun dellAll()
+    @Query("DELETE FROM Buchung WHERE idbuchung= :id")
+    fun dellBuchung(id:Int)
 
     @Query("SELECT* FROM Buchung WHERE idbuchung= :id")
     fun getBuchung(id:Int):Buchung

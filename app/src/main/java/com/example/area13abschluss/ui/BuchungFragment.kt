@@ -388,7 +388,7 @@ class BuchungFragment : Fragment() {
             findNavController().navigate(
                 BuchungFragmentDirections.actionBuchungFragmentToEigenerkalenderFragment()
             )
-            viewModel.instertbuchung(Buchung(0,"${binding.primdDateED.text.toString().replace("-",".")}","${binding.uhrzeitED.text.toString()}","${mutableLiveData.value.toString()}",true))
+            viewModel.instertbuchung(Buchung(0,"${binding.primdDateED.text.toString().replace("-",".")}","${binding.uhrzeitED.text.toString()}","${mutableLiveData.value.toString()}",true,"${binding.vornameED.text.toString()}","${binding.nachnameED.text.toString()}","${binding.emailED.text.toString()}","${binding.telED.text.toString()}"))
         }
 
         alertDialog.setButton(

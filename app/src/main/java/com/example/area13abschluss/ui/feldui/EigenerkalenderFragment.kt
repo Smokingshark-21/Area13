@@ -16,7 +16,10 @@ import com.example.area13abschluss.ui.Viewmodel
 
 class EigenerkalenderFragment : Fragment() {
     lateinit var binding: FragmentEigenerkalenderBinding
+    private val adapter: Adapter by lazy { Adapter() }
+    private  val adapteralt:Adapter by lazy { Adapter() }
     private val viewModel: Viewmodel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +36,18 @@ class EigenerkalenderFragment : Fragment() {
             findNavController().navigate(EigenerkalenderFragmentDirections.actionEigenerkalenderFragmentToKalenderFragment())
         }
 
+        binding.activeRV.adapter = adapter
+        binding.alteRV.adapter = adapteralt
+
         viewModel.data
             .observe(
                 viewLifecycleOwner
             ) {
-                binding.activeRV.adapter = Adapter(it)
+                adapter.submitList(it.filter { it.active==true})
+                adapteralt.submitList(it.filter { it.active==false}.sortedByDescending { it.datum })
             }
+
+
     }
 
 }
