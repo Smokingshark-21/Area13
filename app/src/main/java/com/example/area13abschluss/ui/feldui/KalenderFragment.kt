@@ -27,7 +27,7 @@ class KalenderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.FeldKalenderBTN.setOnClickListener {
-            findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToFeldkalenderFragment())
+            findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToEigenerKalenderTestWebFragment())
         }
 
         binding.EigenerKalenderBTN.setOnClickListener {

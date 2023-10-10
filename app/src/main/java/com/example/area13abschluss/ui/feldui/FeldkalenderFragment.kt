@@ -27,7 +27,7 @@ class FeldkalenderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.backBTN.setOnClickListener {
-            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToKalenderFragment())
+//            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToKalenderFragment())
         }
 
         val area13Btn = binding.area13BTN
@@ -104,7 +104,7 @@ class FeldkalenderFragment : Fragment() {
 
 
         binding.button.setOnClickListener {
-            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToBuchungFragment())
+//            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToBuchungFragment())
         }
     }
 

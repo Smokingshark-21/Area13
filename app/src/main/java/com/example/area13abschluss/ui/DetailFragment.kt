@@ -42,6 +42,7 @@ class DetailFragment : Fragment() {
 
     lateinit var binding: FragmentDetailBinding
     private val viewModel: Viewmodel by activityViewModels()
+
     private var id: Int = 0
     var darumchanced = MutableLiveData<Boolean>(false)
     var uhrzeitchanced = MutableLiveData<Boolean>(false)
