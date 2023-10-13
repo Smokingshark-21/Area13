@@ -43,7 +43,8 @@ class FeldKalenderTestWebFragment : Fragment() {
         hangarCV.strokeWidth = 0
         mpCV.strokeWidth = 0
 
-
+        binding.web.settings.javaScriptEnabled = true
+        binding.web.loadUrl("https://calendar.google.com/calendar/embed?src=8a50f06d2d37ffcb3ba8285fe7154d5b2a2d3a728a2dacb243e4e927f29551cd%40group.calendar.google.com&ctz=Europe%2FBerlin")
 
         area13Btn.setOnClickListener {
             area13CV.strokeWidth = 3
@@ -81,9 +82,6 @@ class FeldKalenderTestWebFragment : Fragment() {
             findNavController().navigate(FeldKalenderTestWebFragmentDirections.actionEigenerKalenderTestWebFragmentToKalenderFragment())
         }
 
-        binding.button2.setOnClickListener {
-            findNavController().navigate(FeldKalenderTestWebFragmentDirections.actionEigenerKalenderTestWebFragmentToBuchungFragment())
-        }
 
     }
 }

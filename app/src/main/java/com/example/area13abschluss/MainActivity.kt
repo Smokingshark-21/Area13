@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.area13abschluss.databinding.ActivityMainBinding
 import com.example.area13abschluss.ui.Viewmodel
 
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,5 +34,8 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack(it.itemId, false)
             return@setOnItemReselectedListener
         }
+
+
+
     }
 }

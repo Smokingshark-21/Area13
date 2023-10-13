@@ -2,6 +2,7 @@ package com.example.area13abschluss.ui.feldui
 
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.area13abschluss.R
 import com.example.area13abschluss.databinding.FragmentFeldkalenderBinding
+
 
 
 class FeldkalenderFragment : Fragment() {
@@ -106,6 +108,7 @@ class FeldkalenderFragment : Fragment() {
         binding.button.setOnClickListener {
 //            findNavController().navigate(FeldkalenderFragmentDirections.actionFeldkalenderFragmentToBuchungFragment())
         }
+
     }
 
 
