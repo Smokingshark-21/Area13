@@ -1,4 +1,4 @@
-package com.example.area13abschluss.ui
+package com.example.area13abschluss
 
 import android.app.Application
 import android.util.Log
@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.area13abschluss.DB.data.Buchung
 import com.example.area13abschluss.DB.getDatabase
+import com.example.area13abschluss.Wetter.Data.WetterRepo
+import com.example.area13abschluss.Wetter.WeaterAPI
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -42,6 +44,14 @@ class Viewmodel(application: Application):AndroidViewModel(application) {
 
     }
 
+    val repository = WetterRepo(api = WeaterAPI)
 
+    val current = repository.weater
+
+    fun loadWeater(){
+        viewModelScope.launch {
+            repository.getWeater()
+        }
+    }
 
 }

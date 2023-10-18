@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Area13Abschluss"
         android:enableOnBackInvokedCallback="true"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <activity

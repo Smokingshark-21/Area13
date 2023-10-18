@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.area13abschluss.R
 import com.example.area13abschluss.RV.Adapter
 import com.example.area13abschluss.databinding.FragmentEigenerkalenderBinding
-import com.example.area13abschluss.databinding.FragmentFeldkalenderBinding
-import com.example.area13abschluss.ui.Viewmodel
+import com.example.area13abschluss.Viewmodel
 
 
 class EigenerkalenderFragment : Fragment() {

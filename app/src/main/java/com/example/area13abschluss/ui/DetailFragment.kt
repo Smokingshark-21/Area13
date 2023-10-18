@@ -6,16 +6,19 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.area13abschluss.DB.data.Buchung
 import com.example.area13abschluss.R
+import com.example.area13abschluss.Viewmodel
 import com.example.area13abschluss.databinding.FragmentDetailBinding
 import com.example.area13abschluss.ui.buchungsfunc.util.emaildata
 import com.example.area13abschluss.ui.feldui.DatePickerFragment
@@ -98,6 +101,26 @@ class DetailFragment : Fragment() {
                 binding.postleitzahlortTV.setText("04179 Leipzig")
                 binding.telefonnummerTV.setText("+49 1520 6254275")
             }
+        }
+
+
+        if (viewModel.datum() == newid.datum&& newid.ort == "Megapark Buchung" ){
+            Log.wtf("lks",viewModel.current.value.toString())
+            binding.wetterCV.visibility = View.VISIBLE
+            viewModel.loadWeater()
+        }
+        else{
+            binding.wetterCV.visibility = View.GONE
+        }
+
+        viewModel.current.observe(viewLifecycleOwner){
+            binding.tempTV.text = "${it.tempC.toString()}°"
+            binding.cityTV.setText("Megapark-Leipzig")
+            binding.winddirTV.text = it.windDir
+            binding.windspdTV.text = it.windKph.toString()
+
+            val imgUrl = it.condition!!.icon!!.toUri().buildUpon().scheme("https").build()
+            binding.weaterIV.load(imgUrl)
         }
 
         binding.strasseplzCV.setOnClickListener {
