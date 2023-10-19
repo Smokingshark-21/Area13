@@ -23,7 +23,7 @@ class Viewmodel(application: Application):AndroidViewModel(application) {
 
     val data = database.buchungDao.getAll()
 
-
+    val firstdatenotify= MutableLiveData<String>()
 
     fun instertbuchung(buchung:Buchung){
         viewModelScope.launch {

@@ -68,16 +68,6 @@ class FeldKalenderTestWebFragment : Fragment() {
             binding.web.loadUrl("https://calendar.google.com/calendar/embed?src=47ca2038ed772afc779652e7dabcc594b46fabaffa91e3ad3356c8bcd21c4dc9%40group.calendar.google.com&ctz=Europe%2FBerlin")
         }
 
-        when(auswahl.value){
-                "Area13" -> {url.postValue("https://calendar.google.com/calendar/embed?src=8a50f06d2d37ffcb3ba8285fe7154d5b2a2d3a728a2dacb243e4e927f29551cd%40group.calendar.google.com&ctz=Europe%2FBerlin")}
-                "Hangar13" -> {url.postValue("https://calendar.google.com/calendar/embed?src=863f85f7f6975337196ac01e08fb7324a955e2a9ef018c2634918e7f0d21d705%40group.calendar.google.com&ctz=Europe%2FBerlin")}
-                "Megapark" -> {url.postValue("https://calendar.google.com/calendar/embed?src=47ca2038ed772afc779652e7dabcc594b46fabaffa91e3ad3356c8bcd21c4dc9%40group.calendar.google.com&ctz=Europe%2FBerlin")}
-        }
-
-        Log.wtf("test1",url.value)
-
-
-
         binding.backBTN3.setOnClickListener {
             findNavController().navigate(FeldKalenderTestWebFragmentDirections.actionEigenerKalenderTestWebFragmentToKalenderFragment())
         }

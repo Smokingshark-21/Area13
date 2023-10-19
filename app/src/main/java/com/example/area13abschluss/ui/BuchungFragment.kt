@@ -37,7 +37,7 @@ class BuchungFragment : Fragment() {
     lateinit var binding: FragmentBuchungBinding
     private val viewModel: Viewmodel by activityViewModels()
 
-    private val spielart = arrayOf("Paintball", "Softair")
+    private var spielart = mutableListOf<String>("Softair")
     private val spieler18 = arrayOf("Ja", "nein")
     private val anzahl = arrayOf(
         "0",
@@ -87,7 +87,7 @@ class BuchungFragment : Fragment() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+
             }
 
 
@@ -107,7 +107,7 @@ class BuchungFragment : Fragment() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+
             }
 
 
@@ -128,7 +128,7 @@ class BuchungFragment : Fragment() {
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
+
                 }
 
 
@@ -149,7 +149,7 @@ class BuchungFragment : Fragment() {
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
+
                 }
 
 
@@ -186,6 +186,9 @@ class BuchungFragment : Fragment() {
             hangarCV.strokeWidth = 0
             mpCV.strokeWidth = 0
             mutableLiveData.postValue("Area13 Buchung")
+            spielart.clear()
+            spielart.add("Softair")
+
 
         }
         hangar13Btn.setOnClickListener {
@@ -193,12 +196,18 @@ class BuchungFragment : Fragment() {
             hangarCV.strokeWidth = 3
             mpCV.strokeWidth = 0
             mutableLiveData.postValue("Hangar13 Buchung")
+            spielart.clear()
+            spielart.add("Paintball")
+            spielart.add("Softair")
         }
         mpBtn.setOnClickListener {
             area13CV.strokeWidth = 0
             hangarCV.strokeWidth = 0
             mpCV.strokeWidth = 3
             mutableLiveData.postValue("Megapark Buchung")
+            spielart.clear()
+            spielart.add("Paintball")
+
         }
 
 
@@ -216,7 +225,6 @@ class BuchungFragment : Fragment() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
 
 
@@ -236,7 +244,6 @@ class BuchungFragment : Fragment() {
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
 
 
@@ -282,7 +289,7 @@ class BuchungFragment : Fragment() {
 
             }
 
-
+        binding.primdDateED.setText(viewModel.datum())
         binding.primdDateED.setOnClickListener {
 
             val datePickerFragment = DatePickerFragment()
@@ -302,6 +309,7 @@ class BuchungFragment : Fragment() {
             datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
         }
 
+        binding.alterdatumED.setText(viewModel.datum())
         binding.alterdatumED.setOnClickListener {
 
             val datePickerFragment = DatePickerFragment()
@@ -340,7 +348,8 @@ class BuchungFragment : Fragment() {
             val spielerausleihen = binding.ausrStungleihenAuto.text.toString()
             val weiterfragen = binding.fragenED.text.toString()
 
-            sendemail(
+            if (vorname.isNotEmpty()&&nachname.isNotEmpty()&&email.isNotEmpty()&&telefonnummer.isNotEmpty()) {
+                sendemail(
                 mutableLiveData.value.toString(),
                 vorname,
                 nachname,
@@ -359,6 +368,9 @@ class BuchungFragment : Fragment() {
                 spielerausleihen,
                 weiterfragen
             )
+            } else{
+                dialogepty()
+            }
         }
 
         emailversand.observe(viewLifecycleOwner) {
@@ -401,6 +413,25 @@ class BuchungFragment : Fragment() {
         layoutParams.weight = 10f
         btnPositive.layoutParams = layoutParams
         btnNegative.layoutParams = layoutParams
+    }
+
+    private fun dialogepty() {
+        val alertDialog = AlertDialog.Builder(requireContext()).create()
+        alertDialog.setTitle("Es Fehlen daten")
+        alertDialog.setMessage("Überprüfen sie ob sie ihren Vornamen,Nachnamen,Email-Adresse und ihre Telefonnumer angegeben haben")
+
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE, "okay"
+        ) { dialog, which ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
+
+        val btnPositive = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+
+        val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
+        layoutParams.weight = 10f
+        btnPositive.layoutParams = layoutParams
     }
 
 

@@ -11,6 +11,7 @@ import com.example.area13abschluss.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack(it.itemId, false)
             return@setOnItemReselectedListener
         }
+
 
 
 

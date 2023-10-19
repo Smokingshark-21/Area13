@@ -170,6 +170,7 @@ class DetailFragment : Fragment() {
             viewModel.instertbuchung(Buchung(newid.idbuchung,binding.datumTV.text.toString()
                 .replace("-","."),binding.uhrzeitTV.text.toString(),newid.ort,
                 false,newid.vorname,newid.nachname,newid.email,newid.telefonnummer))
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEigenerkalenderFragment())
         }
 
 
@@ -188,6 +189,7 @@ class DetailFragment : Fragment() {
                 binding.datumTV.text.toString().replace("-","."),
                 binding.uhrzeitTV.text.toString()
                 ,newid.ort,newid.active,newid.vorname,newid.nachname,newid.email,newid.telefonnummer))
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEigenerkalenderFragment())
         }
 
         binding.delBTN.setOnClickListener {
@@ -231,7 +233,7 @@ class DetailFragment : Fragment() {
 
     private fun dialog(id:Int) {
         val alertDialog = AlertDialog.Builder(requireContext()).create()
-        alertDialog.setTitle("Buchung Wirklich Löschen ?")
+        alertDialog.setTitle("Buchung Wirklich Absagen?")
         alertDialog.setMessage("Die Buchung wird aus Ihrem Kalender endgültig " +
                 "gelöscht und eine absage an ${newide.ort.replace("Buchung","")} gesendet  ")
 
@@ -242,8 +244,7 @@ class DetailFragment : Fragment() {
             viewModel.delbuchung(id)
             sendemail("Absage ${newide.ort}",newide.vorname,newide.nachname,
                 newide.telefonnummer,newide.email,newide.datum,newide.uhrzeit)
-            findNavController().navigate(DetailFragmentDirections.
-            actionDetailFragmentToEigenerkalenderFragment())
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToKalenderFragment())
         }
 
         alertDialog.setButton(

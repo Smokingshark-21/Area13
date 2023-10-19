@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.area13abschluss.R
+import com.example.area13abschluss.Viewmodel
 import com.example.area13abschluss.databinding.FragmentKalenderBinding
 
 class KalenderFragment : Fragment() {
 
     lateinit var binding: FragmentKalenderBinding
+    private val viewModel: Viewmodel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +33,16 @@ class KalenderFragment : Fragment() {
             findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToEigenerKalenderTestWebFragment())
         }
 
-        binding.EigenerKalenderBTN.setOnClickListener {
-            findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToEigenerkalenderFragment())
+        viewModel.data.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.verfugbarTV.visibility = View.GONE
+                binding.EigenerKalenderBTN.setOnClickListener {
+                    findNavController().navigate(KalenderFragmentDirections.actionKalenderFragmentToEigenerkalenderFragment())
+                }
+
+            } else {
+                binding.verfugbarTV.visibility = View.VISIBLE
+            }
         }
     }
 
