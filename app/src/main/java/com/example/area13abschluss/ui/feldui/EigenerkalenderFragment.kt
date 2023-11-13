@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -42,13 +43,6 @@ class EigenerkalenderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-//        var builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-//            .setSmallIcon(R.drawable.area_13)
-//            .setContentTitle(textTitle)
-//            .setContentText(textContent)
-//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-
         binding.backBTN2.setOnClickListener {
             findNavController().navigate(EigenerkalenderFragmentDirections.actionEigenerkalenderFragmentToKalenderFragment())
         }
@@ -60,41 +54,14 @@ class EigenerkalenderFragment : Fragment() {
             .observe(
                 viewLifecycleOwner
             ) {
-                adapter.submitList(it.filter { it.active==true})
-                adapteralt.submitList(it.filter { it.active==false}.sortedByDescending { it.datum })
-//                viewModel.firstdatenotify.postValue(it.filter { it.active==true }.sortedByDescending { it.datum }.first().datum)
+                adapter.submitList(it.filter { it.active == true })
+                adapteralt.submitList(it.filter { it.active == false }
+                    .sortedByDescending { it.datum })
             }
-
-//        val datumString =  viewModel.firstdatenotify.value
-//        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-//        val datum = LocalDate.parse(datumString, formatter)
-//        val neuesDatum = datum.minusDays(1)
-//        val neuerDatumString = neuesDatum.format(formatter)
-//        if (viewModel.datum() ==  neuerDatumString)
-//        {
-//            Toast.makeText(requireContext(), "niceDatum", Toast.LENGTH_SHORT).show()
-//        }
-
     }
-
 }
 
 
 
 
-//private fun createNotificationChannel() {
-//    // Create the NotificationChannel, but only on API 26+ because
-//    // the NotificationChannel class is not in the Support Library.
-//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//        val name = getString(R.string.channel_name)
-//        val descriptionText = getString(R.string.channel_description)
-//        val importance = NotificationManager.IMPORTANCE_DEFAULT
-//        val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-//            description = descriptionText
-//        }
-//        // Register the channel with the system.
-//        val notificationManager: NotificationManager =
-//            getSystemService(this.NOTIFICATION_SERVICE) as NotificationManager
-//        notificationManager.createNotificationChannel(channel)
-//    }
-//}
+

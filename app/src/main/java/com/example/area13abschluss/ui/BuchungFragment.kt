@@ -434,7 +434,7 @@ class BuchungFragment : Fragment() {
         btnPositive.layoutParams = layoutParams
     }
 
-
+//  Email funktion sendet eine mail an ein veknüpftes email konto
     private fun sendemail(
         headline: String, vorname: String,
         nachname: String, strhausnmr: String, postleit: String, ort: String,
